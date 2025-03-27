@@ -896,18 +896,6 @@ void Pipsolar::add_polling_command_(const char *command, ENUMPollingCommand poll
   }
 }
 
-uint16_t Pipsolar::pipsolar_crc_(uint8_t *msg, uint8_t len) {
-  uint16_t crc = crc16be(msg, len);
-  uint8_t crc_low = crc & 0xff;
-  uint8_t crc_high = crc >> 8;
-  if (crc_low == 0x28 || crc_low == 0x0d || crc_low == 0x0a)
-    crc_low++;
-  if (crc_high == 0x28 || crc_high == 0x0d || crc_high == 0x0a)
-    crc_high++;
-  crc = (crc_high << 8) | crc_low;
-  return crc;
-}
-
 uint16_t Pipsolar::cal_crc_half_(uint8_t *msg, uint8_t len) {
   uint16_t crc;
 
