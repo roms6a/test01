@@ -733,6 +733,7 @@ void Pipsolar::loop() {
         this->empty_uart_buffer_();
         if (this->state_ == STATE_POLL) {
           this->state_ = STATE_POLL_COMPLETE;
+          ESP_LOGD(TAG, "was 0x0D: %s", command);
         }
         if (this->state_ == STATE_COMMAND) {
           this->state_ = STATE_COMMAND_COMPLETE;
